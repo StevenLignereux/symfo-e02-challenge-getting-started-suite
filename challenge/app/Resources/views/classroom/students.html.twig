@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tous les étudiants{{ parent() }}{% endblock %}
+
+{% block body %}
+
+<h1>Liste des étudiants</h1>
+
+<ul>
+    {% for key, student in students %}
+        <li class="{{ cycle(['bg-pair', 'bg-impair'], key) }}"><a href="{{ path('student_show', {'id': key}) }}">{{ student.name }}</a></li>
+    {% else %}
+        <li>Aucun étudiant.</li>
+    {% endfor %}
+</ul>
+
+<hr>
+
+<p>Dernier étudiant affiché : {{ lastStudent }}</p>
+<p>Le nombre aléatoire est : {{ app.session.get('luckyNumber', 666) }}</p>
+
+<hr>
+
+<p><a href="{{ path('student_pdf') }}">Télécharger le planning de la formation.</a></p>
+<p><a href="{{ path('student_pdf_alt') }}">Télécharger le planning de la formation (alternative).</a></p>
+
+{% endblock %}
