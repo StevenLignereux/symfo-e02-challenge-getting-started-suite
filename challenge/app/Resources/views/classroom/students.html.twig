@@ -8,7 +8,7 @@
 
 <ul>
     {% for key, student in students %}
-        <li class="{{ cycle(['bg-pair', 'bg-impair'], key) }}"><a href="{{ path('student_show', {'id': key}) }}">{{ student.name }}</a></li>
+        <li class="{{ cycle(['bg-pair', 'bg-impair'], key) }}"><a href="{{ path('student_show', {'id': key}) }}" class="{{ student.inClassroom ? 'student-in' : 'student-out'}}">{{ student.name }}</a></li>
     {% else %}
         <li>Aucun étudiant.</li>
     {% endfor %}
@@ -16,7 +16,7 @@
 
 <hr>
 
-<p>Dernier étudiant affiché : {{ lastStudent }}</p>
+<p>Dernier étudiant affiché : {{ lastStudent }}, le {{ lastStudentSeen|date('d/m/Y à H:m:s') }}</p>
 <p>Le nombre aléatoire est : {{ app.session.get('luckyNumber', 666) }}</p>
 
 <hr>

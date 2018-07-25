@@ -8,6 +8,11 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+      <nav>
+        <a href="{{path('student_list')}}">Liste des étudiants</a>
+        <a href="{{path('i_feel_text')}}">Emoji text</a>
+        <a href="{{path('i_feel_image')}}">Emoji image</a>
+      </nav>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>

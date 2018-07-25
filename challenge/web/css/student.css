@@ -1,3 +1,11 @@
-body {
+body 
+{
     background: lightgreen;
 }
+
+#profile-image
+{
+  float: right;
+  width: 250px;
+}
+

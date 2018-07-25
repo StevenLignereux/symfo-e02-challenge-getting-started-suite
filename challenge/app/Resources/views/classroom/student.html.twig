@@ -7,7 +7,20 @@
 <h1>Profil étudiant</h1>
 
 <h2>{{ student.name }}</h2>
+{# Utilisation de set pour définir une varible et de l'opérateur elvis #}
+{% set profileImage = student.profile ?: 'default.png' %}
+<img id="profile-image" src=" {{ asset('images/profiles/' ~ (profileImage) )}} " alt="">
+<p><i>Status: {{ student.inClassroom ? 'Présente' : 'Absente'}}</i></p>
 <p>{{ student.description }}</p>
+
+<h3>Ordinateur</h3>
+<ul>
+  {% for type, name in student.computer %}
+      <li>{{type}} : {{name}}</li>
+  {% else %}
+      <li>Matériel à se procurrer pour suivre les cours</li>
+  {% endfor %}
+</ul>
 
 <hr>
 
@@ -18,3 +31,4 @@
 {% block stylesheets %}
 <link rel="stylesheet" href="{{ asset('css/student.css') }}">
 {% endblock %}
+

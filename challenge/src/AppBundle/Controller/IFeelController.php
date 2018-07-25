@@ -21,7 +21,8 @@ class IFeelController extends Controller
         // On récupère le chemin relatif vers l'image
         $emoji = $emojis[0];
 
-        return new Response('<html><body>'.$emoji.'</body></html>');
+        return new Response('<html><head><title>Emoji :texte:</title>
+        </head><body>'.$emoji.'</body></html>');
     }
 
     /**

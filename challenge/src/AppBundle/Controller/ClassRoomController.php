@@ -21,10 +21,13 @@ class ClassRoomController extends Controller
 
         // On récupère notre étudiant
         $lastStudent = $session->get('lastStudent', 'Aucun étudiant vu.');
+        // On récupère la date 
+        $lastStudentSeen = $session->get('lastStudentSeen', 'Pas de date.');
 
         return $this->render('classroom/students.html.twig', [
             'students' => $students,
             'lastStudent' => $lastStudent,
+            'lastStudentSeen' => $lastStudentSeen,
         ]);
     }
 
@@ -43,6 +46,9 @@ class ClassRoomController extends Controller
 
         // On stocke son nom en Session
         $session->set('lastStudent', $student['name']);
+
+        // On stocke la date courante en session
+        $session->set('lastStudentSeen', new \DateTime());
 
         // Juste pour le fun, on ajoute un nombre aléatoire à la session
         $luckyNumber = mt_rand(1, 10);

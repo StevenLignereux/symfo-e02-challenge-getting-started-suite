@@ -5,3 +5,8 @@
 .bg-impair {
     background: lightsalmon;
 }
+
+.student-out
+{
+  text-decoration: line-through;
+}
